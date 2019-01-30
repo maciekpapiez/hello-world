@@ -9,7 +9,7 @@ script: make
 deploy:
   provider: script
   script: scripts/build-and-push-image.sh
+  skip_cleanup: true
   on:
-    skip_cleanup: true
     all_branches: true
     condition: $TRAVIS_BRANCH =~ ^master|develop$
