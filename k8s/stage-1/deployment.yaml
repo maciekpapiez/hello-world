@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-deployment
+  labels:
+    app: hello-world
+spec:
+  template:
+    metadata:
+      name: hello-world-pod
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: app
+        image: 405528688887.dkr.ecr.eu-west-1.amazonaws.com/example/hello-world:8504e34
+        ports:
+          - containerPort: 80
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: hello-world

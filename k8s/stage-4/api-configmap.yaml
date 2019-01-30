@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-map
+data:
+  OUR_NOT_REALLY_SECRET_VARIABLE_1: foo
+  OUR_NOT_REALLY_SECRET_VARIABLE_2: bar

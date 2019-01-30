@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-deployment
+  labels:
+    app: hello-world
+spec:
+  template:
+    metadata:
+      name: hello-world-pod
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: app
+        image: 405528688887.dkr.ecr.eu-west-1.amazonaws.com/example/hello-world:8504e34
+        ports:
+          - containerPort: 80
+        # ===========================================================
+        envFrom:
+        - configMapRef:
+            name: config-map
+        env:
+          - name: OUR_DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: database-credentials
+                key: username
+          - name: OUR_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: database-credentials
+                key: password
+        # ===========================================================
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: hello-world
