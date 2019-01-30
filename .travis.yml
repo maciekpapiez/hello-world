@@ -5,3 +5,11 @@ env:
   - REPO=405528688887.dkr.ecr.eu-west-1.amazonaws.com/example
 
 script: make
+
+deploy:
+  provider: script
+  script: docker/build-and-push-image.sh
+  on:
+    skip_cleanup: true
+    all_branches: true
+    condition: $TRAVIS_BRANCH =~ ^master|develop$
