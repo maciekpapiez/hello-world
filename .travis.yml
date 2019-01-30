@@ -1,0 +1,7 @@
+language: generic
+
+sudo: required
+env:
+  - REPO=405528688887.dkr.ecr.eu-west-1.amazonaws.com/example
+
+script: make
