@@ -20,12 +20,8 @@ $(aws ecr get-login --no-include-email --region eu-west-1)
 
 # echo "Tagging the image..."
 # docker tag $IMAGE_NAME $REPOSITORY_URL/$IMAGE_NAME:$IMAGE_VERSION
-# docker tag $IMAGE_NAME $REPOSITORY_URL/$IMAGE_NAME:$TRAVIS_COMMIT
-# docker tag $IMAGE_NAME $REPOSITORY_URL/$IMAGE_NAME:$TRAVIS_BRANCH
 
 echo "Pushing the image to the remote repository..."
-# docker push $REPOSITORY_URL/$IMAGE_NAME:$IMAGE_VERSION
-docker push $REPOSITORY_URL/$IMAGE_NAME:$TRAVIS_COMMIT
-# docker push $REPOSITORY_URL/$IMAGE_NAME:$TRAVIS_BRANCH
+docker push $REPOSITORY_URL/$IMAGE_NAME:$IMAGE_VERSION
 
 echo "Done!"
