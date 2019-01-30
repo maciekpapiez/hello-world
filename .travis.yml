@@ -8,7 +8,7 @@ script: make
 
 deploy:
   provider: script
-  script: docker/build-and-push-image.sh
+  script: scripts/build-and-push-image.sh
   on:
     skip_cleanup: true
     all_branches: true
