@@ -16,10 +16,7 @@ echo "Logging in to ECR..."
 $(aws ecr get-login --no-include-email --region eu-west-1)
 
 # echo "Building the image..."
-# docker build . -f ./docker/k8s/Dockerfile -t $IMAGE_NAME
-
-# echo "Tagging the image..."
-# docker tag $IMAGE_NAME $REPOSITORY_URL/$IMAGE_NAME:$IMAGE_VERSION
+# docker build . -f ./docker/k8s/Dockerfile -t $REPOSITORY_URL/$IMAGE_NAME:$IMAGE_VERSION
 
 echo "Pushing the image to the remote repository..."
 docker push $REPOSITORY_URL/$IMAGE_NAME:$IMAGE_VERSION
